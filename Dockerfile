@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
@@ -7,6 +7,9 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 5000
+# Copy .env if using dotenv
+COPY .env .env
 
-CMD ["npm", "server.js"]
+EXPOSE 5000
+CMD ["npm", "start"]
+
